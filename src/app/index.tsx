@@ -16,7 +16,7 @@ import { useTodos } from '@/hooks/use-todos';
 
 export default function TodoListScreen() {
   const [text, setText] = useState('');
-  const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos();
+  const { todos, isLoaded, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos();
 
   const completedCount = todos.filter((todo) => todo.completed).length;
 
@@ -25,6 +25,16 @@ export default function TodoListScreen() {
       setText('');
     }
   };
+
+  if (!isLoaded) {
+    return (
+      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom', 'left', 'right']}>
+        <View style={[styles.container, styles.centered]}>
+          <Text style={styles.counter}>Loading...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top', 'bottom', 'left', 'right']}>
@@ -73,6 +83,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
     padding: 20,
+  },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     color: 'white',
