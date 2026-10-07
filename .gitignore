@@ -2,42 +2,101 @@
 
 # dependencies
 node_modules/
+.pnp/
+.pnp.js
+.pnpm-store/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn-integrity
+
+# package manager logs / debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.*
+lerna-debug.*
+bun.lockb
+.pnpm-debug.log*
 
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
+build/
+out/
 expo-env.d.ts
 
-# Native
+# Expo Router generated types / cache
+.expo/metro.config.from*
+
+# Native — Continuous Native Generation (CNG)
+# /ios and /android are generated from app.json + config plugins.
+# Keep them ignored unless you have intentionally run `expo prebuild`
+# and need to commit custom native code.
+/ios
+/android
 .kotlin/
 *.orig.*
+ios/Pods/
+ios/build/
+android/build/
+android/app/build/
+android/.gradle/
+android/local.properties
+
+# EAS / signing — never commit secrets
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.pem
+credentials.json
+eas-debug.log
+eas.json.bak
+
+# env files — commit only .env.example
+.env*
+!.env.example
 
 # Metro
 .metro-health-check*
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# typescript
+# TypeScript / build cache
 *.tsbuildinfo
+tsconfig.tsbuildinfo
+.turbo/
+.eslintcache
 
-example
+# Testing / coverage
+coverage/
+.nyc_output/
 
-# generated native folders
-/ios
-/android
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+ehthumbs.db
+
+# Editors / IDEs
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
