@@ -1,4 +1,4 @@
-# test-app
+# TODO_list-app
 
 A minimal to-do list app built with Expo and React Native.
 
